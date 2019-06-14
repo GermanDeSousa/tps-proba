@@ -137,3 +137,86 @@ print(simulacion_mom_b_n)
 
 simulacion_med_b_n = simulacion_med(1,15)
 print(simulacion_med_b_n)
+
+# Ejercicio 6
+valores_b = runif(100,min = 0,max = 2)
+
+vec_var_mv = c()
+vec_var_mom = c()
+vec_var_med = c()
+
+vec_sesgo_mv = c()
+vec_sesgo_mom = c()
+vec_sesgo_med = c()
+
+vec_ecm_mv = c()
+vec_ecm_mom = c()
+vec_ecm_med = c()
+
+for (i in valores_b) {
+  simul_mv = simulacion_mv(i,15)
+  simul_mom = simulacion_mom(i,15)
+  simul_med = simulacion_med(i,15)
+  
+  vec_sesgo_mv = c(vec_sesgo_mv, simul_mv[[1]])
+  vec_sesgo_mom = c(vec_sesgo_mom, simul_mom[[1]])
+  vec_sesgo_med = c(vec_sesgo_med, simul_med[[1]])
+  
+  vec_var_mv = c(vec_var_mv, simul_mv[[2]])
+  vec_var_mom = c(vec_var_mom, simul_mom[[2]])
+  vec_var_med = c(vec_var_med, simul_med[[2]])
+  
+  vec_ecm_mv = c(vec_ecm_mv ,error_cuadratico_medio(simul_mv[[2]],simul_mv[[1]]))      
+  vec_ecm_mom = c(vec_ecm_mom ,error_cuadratico_medio(simul_mom[[2]],simul_mom[[1]]))  
+  vec_ecm_med = c(vec_ecm_med, error_cuadratico_medio(simul_med[[2]],simul_med[[1]]))
+}
+
+par(mfrow = c(1,3))
+
+plot(valores_b,vec_sesgo_mv,col ='red',xlab = 'b',ylab = 'Sesgo',main = 'Sesgo de los Estimadores')
+points(valores_b,vec_sesgo_mom,col = 'black')
+points(valores_b,vec_sesgo_med,col ='blue')
+legend("bottomleft",c("mv","mom","med"),fill=c("red","black","blue"))
+
+plot(valores_b,vec_var_mv,col ='red',xlab = 'b',ylab = 'Varianza',main = 'Varianza de los Estimadores')
+points(valores_b,vec_var_mom,col = 'black')
+points(valores_b,vec_var_med,col ='blue')
+legend("topleft",c("mv","mom","med"),fill=c("red","black","blue"))
+
+plot(valores_b,vec_ecm_mv,col ='red',xlab = 'b',ylab = 'ECM',main = 'ECM de los Estimadores')
+points(valores_b,vec_ecm_mom,col = 'black')
+points(valores_b,vec_ecm_med,col ='blue')
+legend("topleft",c("mv","mom","med"),fill=c("red","black","blue"))
+
+# Ejercicio 7
+valores_n = c(15,30,60,120,240)
+
+ecm_mv =c()
+ecm_mom = c()
+ecm_med = c()
+
+for (i in valores_n) {
+  simul_mv = simulacion_mv(1,i)
+  simul_mom = simulacion_mom(1,i)
+  simul_med = simulacion_med(1,i)
+  
+  ecm_mv = c(ecm_mv,error_cuadratico_medio(simul_mv[[2]],simul_mv[[1]]))
+  ecm_mom = c(ecm_mom,error_cuadratico_medio(simul_mom[[2]],simul_mom[[1]]))
+  ecm_med = c(ecm_med,error_cuadratico_medio(simul_med[[2]],simul_med[[1]]))
+}
+
+plot(valores_n,ecm_mv,ylim = c(0,0.07),type = 'l',col ='red',xlab = 'n',ylab = 'ECM',main = 'ECM de los Estimadores')
+lines(valores_n,ecm_mom,col = 'black')
+lines(valores_n,ecm_med,col ='blue')
+legend("topright",c("mv","mom","med"),fill=c("red","black","blue"))
+
+# Ejercicio 8
+muestra = c(0.917,0.247,0.384,0.530,0.798,0.912,0.096,0.684,0.394,20.1,0.769,0.137,0.352,0.332,0.670)
+
+estimador_mv_muestra = b_maxima_verosimilitud(muestra) 
+estimador_mom_muestra = b_momentos(muestra)
+estimador_med_muestra = b_mediana(muestra)
+  
+print(estimador_mv_muestra)
+print(estimador_mom_muestra)
+print(estimador_med_muestra)
