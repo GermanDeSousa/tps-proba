@@ -211,7 +211,7 @@ lines(valores_n,ecm_med,col ='blue')
 legend("topright",c("mv","mom","med"),fill=c("red","black","blue"))
 
 # Ejercicio 8
-muestra = c(0.917,0.247,0.384,0.530,0.798,0.912,0.096,0.684,0.394,20.1,0.769,0.137,0.352,0.332,0.670)
+muestra = c(0.917, 0.247, 0.384, 0.530, 0.798, 0.912, 0.096, 0.684, 0.394, 20.1, 0.769, 0.137, 0.352, 0.332, 0.670)
 
 estimador_mv_muestra = b_maxima_verosimilitud(muestra) 
 estimador_mom_muestra = b_momentos(muestra)
@@ -220,3 +220,76 @@ estimador_med_muestra = b_mediana(muestra)
 print(estimador_mv_muestra)
 print(estimador_mom_muestra)
 print(estimador_med_muestra)
+
+# Ejercicio 9
+simulacion_mv_con_outliers = function (b, n) {
+  cantidad_de_repeticiones = 1000 
+  variable_aleatoria_con_b_maxima_verosimilitud = c()
+  for(i in 1:cantidad_de_repeticiones){
+    sample = runif(n, min=0, max=b)
+    sample_with_outliers = c()
+    for(value in sample){
+      if(rbinom(n=1, size=1, prob=0.005)){
+        sample_with_outliers = c(sample_with_outliers, value*100)
+      } else {
+        sample_with_outliers = c(sample_with_outliers, value)
+      }
+    }
+    variable_aleatoria_con_b_maxima_verosimilitud = c(variable_aleatoria_con_b_maxima_verosimilitud, b_maxima_verosimilitud(sample_with_outliers))
+  }
+  media_muestral_b_maxima_verosimilitud = media_muestral(variable_aleatoria_con_b_maxima_verosimilitud)
+  varianza_maxima_verosimilitud = varianza(variable_aleatoria_con_b_maxima_verosimilitud)
+  sesgo_maxima_verosimilitud = media_muestral_b_maxima_verosimilitud - b
+  return (list(sesgo_b_maxima_verosimilitud=sesgo_maxima_verosimilitud, varianza_b_maxima_verosimilitud=varianza_maxima_verosimilitud, ecm_b_maxima_verosimilitud=error_cuadratico_medio(varianza_maxima_verosimilitud, sesgo_maxima_verosimilitud)))
+}
+
+simulacion_mom_con_outliers = function (b, n) {
+  cantidad_de_repeticiones = 1000 
+  variable_aleatoria_con_b_momentos = c()
+  for(i in 1:cantidad_de_repeticiones){
+    sample = runif(n, min=0, max=b)
+    sample_with_outliers = c()
+    for(value in sample){
+      if(rbinom(n=1, size=1, prob=0.005)){
+        sample_with_outliers = c(sample_with_outliers, value*100)
+      } else {
+        sample_with_outliers = c(sample_with_outliers, value)
+      }
+    }
+    variable_aleatoria_con_b_momentos = c(variable_aleatoria_con_b_momentos, b_momentos(sample_with_outliers))
+  }
+  media_muestral_b_momentos = media_muestral(variable_aleatoria_con_b_momentos)
+  varianza_momentos = varianza(variable_aleatoria_con_b_momentos)
+  sesgo_momentos = media_muestral_b_momentos - b
+  return (list(sesgo_b_momentos=sesgo_momentos, varianza_b_momentos=varianza_momentos, ecm_b_momentos=error_cuadratico_medio(varianza_momentos, sesgo_momentos)))
+}
+
+simulacion_med_con_outliers = function (b, n) {
+  cantidad_de_repeticiones = 1000 
+  variable_aleatoria_con_b_mediana = c()
+  for(i in 1:cantidad_de_repeticiones){
+    sample = runif(n, min=0, max=b)
+    sample_with_outliers = c()
+    for(value in sample){
+      if(rbinom(n=1, size=1, prob=0.005)){
+        sample_with_outliers = c(sample_with_outliers, value*100)
+      } else {
+        sample_with_outliers = c(sample_with_outliers, value)
+      }
+    }
+    variable_aleatoria_con_b_mediana = c(variable_aleatoria_con_b_mediana, b_mediana(sample_with_outliers))
+  }
+  media_muestral_b_mediana = media_muestral(variable_aleatoria_con_b_mediana)
+  varianza_mediana = varianza(variable_aleatoria_con_b_mediana)
+  sesgo_mediana = media_muestral_b_mediana - b
+  return (list(sesgo_b_mediana=sesgo_mediana, varianza_b_mediana=varianza_mediana, ecm_b_mediana=error_cuadratico_medio(varianza_mediana, sesgo_mediana)))
+}
+
+simulacion_mv_b_n = simulacion_mv_con_outliers(1,15)
+print(simulacion_mv_b_n)
+
+simulacion_mom_b_n = simulacion_mom_con_outliers(1,15)
+print(simulacion_mom_b_n)
+
+simulacion_med_b_n = simulacion_med_con_outliers(1,15)
+print(simulacion_med_b_n)
