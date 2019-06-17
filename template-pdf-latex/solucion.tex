@@ -5,6 +5,7 @@
 \usepackage{amsmath, amscd, amssymb, amsthm, latexsym}
 \usepackage[spanish,activeacute]{babel}
 \usepackage{enumerate}
+\usepackage{bbm}
 
 \setlength{\parskip}{0.1em}
 \usepackage{caratula} % Version modificada para usar las macros de algo1 de ~> https://github.com/bcardiff/dc-tex
@@ -25,6 +26,38 @@
 \maketitle
 
 \section{Ejercicio 1}
+\subsection{Estimador de momentos}
+Sea $X_{i}$~U(0, $\theta$)
+
+\[
+E(x_{i}) = \theta / 2
+\]
+
+Entonces: 
+\[
+\frac{\sum_{i=1}^{n}x_{i}}{n} = 2 \hat{\theta_{n}}
+\]
+\[
+\hat{\theta_{n}} = \frac{2}{n} \sum_{i=1}^{n}x_{i}
+\]
+
+
+
+\subsection{Estimador de máxima verosimilitud}
+Sea $X_{i}$~U(0, $\theta$)
+
+\[
+L(X_{1}, X_{2}, ... X{n}, \theta) = \frac{1}{\theta^{n}} \mathbbm{1}_{0 \leq x_{i} \leq \theta, \forall x_{i}}(x_{i}) 
+\]
+\[
+L(X_{1}, X_{2}, ... X{n}, \theta) = \frac{1}{\theta^{n}} \mathbbm{1}_{max( x_{i}) \leq \theta}(x_{i}) 
+\]
+
+Entonces: 
+
+\[
+\hat{\theta_{n}} = max(x_{i}) \textrm{ con i $\leq$ n}
+\]
 
 \section{Ejercico 2}
 
