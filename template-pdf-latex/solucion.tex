@@ -6,6 +6,8 @@
 \usepackage[spanish,activeacute]{babel}
 \usepackage{enumerate}
 \usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{float}
 
 \setlength{\parskip}{0.1em}
 \usepackage{caratula} % Version modificada para usar las macros de algo1 de ~> https://github.com/bcardiff/dc-tex
@@ -19,7 +21,7 @@
 \newcommand{\senial}{\textit{se\~nal}}
 
 % Pongan cuantos integrantes quieran
-\integrante{Capello, Bruno}{007/007}{bruno.icapello@gmail.com}
+\integrante{Capello, Bruno}{623/17}{bruno.icapello@gmail.com}
 \integrante{De Sousa Bispo, Germán}{359/12}{german\_nba11@hotmail.com}
 \integrante{Serapio, Noelia}{004/15}{noeliaserapio@gmail.com}
 
@@ -76,11 +78,50 @@ Cada uno de los pasos para realizar este experimento están diferenciados con un
 \section{Ejercico 5}
 
 \section{Ejercico 6}
+\subsection{Graficos}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm, height=10cm]{Ejercicio-6-plot}
+\end{figure}
+
+\subsection{Observaciones y elección de estimador}
+Viendo los graficos podemos ver que : \newline
+Con respecto al sesgo, a medida que aumenta b, los estimadores de momentos y mediana mantienen poco sesgo pero el de maxima verosimilitud en cambio va aumentando. \newline
+Con respecto a la varianza y el ECM los graficos son muy parecidos, a medida que aumenta b, aumenta tanto la varianza como el ECM . \newline
+
+En este caso elegimos el estimador de maxima verosimilitud, ya que los estimadores de momentos y mediana como tienen poco sesgo van a tener mucha varianza a medida que aumenta b. en cambio el de maxima verosimilitud mantiene algo de sesgo y varianza.
 
 \section{Ejercico 7}
+\subsection{Graficos}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm, height=10cm]{Ejercicio-7-plot}
+\end{figure}
+
+\subsection{Observaciones y elección de estimador}
+Podemos observar para b = 1, que a medida que aumenta el n, el ECM  que tienen los estimadores disminuye y que el estimador de maxima verosimilitud es el que menos error comete, por ende decidimos elegir el estimador de maxima verosimilitud en este caso.   
+
+\subsection{Consistencia a partir de los Gráficos}
+Sea  $(X_{i}) $ iid que dependen de $\theta$ y sea $\hat{\theta_{n}}$ un estimador de $\theta$ si pasa : \newline
+ 1. \[E_{\theta}{(\hat{\theta_{n}})} \rightarrow \ \theta \ cuando \ n \rightarrow \infty \] \newline
+ 2. \[V_{\theta}{(\hat{\theta_{n}})} \rightarrow \ 0 \ cuando \ n \rightarrow \infty \] \newline
+entonces es consistente el estimador. \newline
+  
+Viendo el grafico como \[ECM(\hat{\theta_{n}}) \rightarrow 0 \ cuando \ n \rightarrow \infty \ y \ el\ ECM = sesgo^2 + varianza\] podemos decir que son consistentes. 
 
 \section{Ejercico 8}
+\subsection{Cálculo de los estimadores}
+Sea la siguiente muestra : [0.917, 0.247, 0.384, 0.530, 0.798, 0.912, 0.096, 0.684, 0.394, 20.1, 0.769, 0.137, 0.352, 0.332, 0.670] \newline
 
+Usando los estimadores calculados en el ejercicio 1 dan lo siguiente : \newline
+Maxima verosimilitud da 20.1 \newline
+Momentos da 3.642933 \newline
+Mediana da 1.06 
+
+
+\subsection{Observaciones}
+Lo que podemos observar es que esta muestra dada tiene un solo punto outlier muy grande comparado con los demas puntos, lo que afecta mucho en este caso a la estimación de maxima verosimilitud y afecta en menor medida a la de momentos. Por eso en este caso elegimos el de la mediana que es la menos afectada y da una buena estimacion.
+ 
 \section{Ejercico 9}
 Para este ejercicio se hizo una pequeña adaptación de las simulaciones hechas para cada estimador en el ejercicio 5. 
 
