@@ -69,7 +69,21 @@ Para la implementación de este estimador, se utilizó la función median() que 
 \section{Ejercico 3}
 En este ejercicio, la muestra se genera aleatoriamente con la función runif(15, min=0, max=b). Luego de eso se inserta esa muestra en nuestras funciones de estimación. 
 
-Dado que cada ejecución tiene una muestra aleatoria distinta, presentamos las estimaciones impresas por pantalla en nuestro código en R.
+Dado que cada ejecución tiene una muestra aleatoria distinta, presentamos las estimaciones impresas por pantalla en nuestro código en R. Además agregamos aquí una tabla comparativa de un ejemplo de una estimación realizada. 
+
+\begin{center}
+ \begin{tabular}{||c | c||} 
+ \hline
+ Estimador & Estimación \\ [0.5ex] 
+ \hline\hline
+ Estimador de momentos & 1.016217 \\ 
+ \hline
+ Estimador de máxima verosimilitud & 0.9402409 \\
+ \hline
+ Estimador mediana & 1.023344 \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
 
 \section{Ejercico 4}
 Cada uno de los pasos para realizar este experimento están diferenciados con un comentario en nuestro código en R donde indica que inciso del ejercicio es.
@@ -159,7 +173,21 @@ Por lo tanto, la probabilidad de que una muestra este contaminada es de $0,0725$
 \subsection{Aproximaciones conseguidas}
 En este ejercicio, la muestra se genera aleatoriamente con la función runif(15, min=0, max=b). Y encima también se le agrega un error con cierta probabilidad antes de insertar esa muestra en nuestras funciones de estimación. 
 
-Dado que cada ejecución tiene una muestra aleatoria distinta, presentamos las estimaciones impresas por pantalla en nuestro código en R.
+Dado que cada ejecución tiene una muestra aleatoria distinta, presentamos las estimaciones impresas por pantalla en nuestro código en R. Además agregamos aquí una tabla comparativa de un ejemplo de una estimación realizada. 
+
+\begin{center}
+ \begin{tabular}{||c | c | c | c||} 
+ \hline
+ Estimador & Sesgo & Varianza & Error Cuadrático Medio \\ [0.5ex] 
+ \hline\hline
+ Estimador de momentos &  0.4883285 & 4.036921 & 4.275386 \\ 
+ \hline
+ Estimador de máxima verosimilitud & 3.502678 & 227.5533 & 239.8221\\
+ \hline
+ Estimador mediana & 0.004252857 & 0.05841771 & 0.0584358 \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
 
 \subsection{Elección de estimador}
 Luego de ejecutar varias veces nuestro código para los tres estimadores, y comparando los resultados podemos notar ciertos patrones. 
