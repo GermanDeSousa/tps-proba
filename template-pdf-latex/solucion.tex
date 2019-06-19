@@ -103,7 +103,7 @@ Viendo los graficos podemos ver que : \newline
 Con respecto al sesgo, a medida que aumenta b, los estimadores de momentos y mediana mantienen poco sesgo pero el de maxima verosimilitud en cambio va aumentando. \newline
 Con respecto a la varianza y el ECM los graficos son muy parecidos, a medida que aumenta b, aumenta tanto la varianza como el ECM . \newline
 
-En este caso elegimos el estimador de maxima verosimilitud, ya que los estimadores de momentos y mediana como tienen poco sesgo van a tener mucha varianza a medida que aumenta b. en cambio el de maxima verosimilitud mantiene algo de sesgo y varianza.
+En este caso elegimos el estimador de maxima verosimilitud, ya que los estimadores de momentos y mediana como tienen poco sesgo van a tener mucha varianza a medida que aumenta b. En cambio el de máxima verosimilitud mantiene algo de sesgo y varianza por lo que parece más estable.
 
 \section{Ejercico 7}
 \subsection{Graficos}
@@ -117,8 +117,8 @@ Podemos observar para b = 1, que a medida que aumenta el n, el ECM  que tienen l
 
 \subsection{Consistencia a partir de los Gráficos}
 Sea  $(X_{i}) $ iid que dependen de $\theta$ y sea $\hat{\theta_{n}}$ un estimador de $\theta$ si pasa : \newline
- 1. \[E_{\theta}{(\hat{\theta_{n}})} \rightarrow \ \theta \ cuando \ n \rightarrow \infty \] \newline
- 2. \[V_{\theta}{(\hat{\theta_{n}})} \rightarrow \ 0 \ cuando \ n \rightarrow \infty \] \newline
+\[1: E_{\theta}{(\hat{\theta_{n}})} \rightarrow \ \theta \ cuando \ n \rightarrow \infty \] \newline
+\[2: V_{\theta}{(\hat{\theta_{n}})} \rightarrow \ 0 \ cuando \ n \rightarrow \infty \] \newline
 entonces es consistente el estimador. \newline
   
 Viendo el grafico como \[ECM(\hat{\theta_{n}}) \rightarrow 0 \ cuando \ n \rightarrow \infty \ y \ el\ ECM = sesgo^2 + varianza\] podemos decir que son consistentes. 
@@ -127,7 +127,7 @@ Viendo el grafico como \[ECM(\hat{\theta_{n}}) \rightarrow 0 \ cuando \ n \right
 \subsection{Cálculo de los estimadores}
 Sea la siguiente muestra : [0.917, 0.247, 0.384, 0.530, 0.798, 0.912, 0.096, 0.684, 0.394, 20.1, 0.769, 0.137, 0.352, 0.332, 0.670] \newline
 
-Usando los estimadores calculados en el ejercicio 1 dan lo siguiente : \newline
+Usando los estimadores calculados en el ejercicio 1 dan lo siguiente: \newline
 Maxima verosimilitud da 20.1 \newline
 Momentos da 3.642933 \newline
 Mediana da 1.06 
