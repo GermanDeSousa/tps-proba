@@ -29,18 +29,18 @@ b_mediana = function(sample){
 b = 1
 sample = runif(15, min=0, max=b)
 
-b_momentos = b_momentos(sample)
-b_maxima_verosimilitud = b_maxima_verosimilitud(sample)
-b_mediana = b_mediana(sample)
+estimacion_momentos = b_momentos(sample)
+estimacion_maxima_verosimilitud = b_maxima_verosimilitud(sample)
+estimacion_mediana = b_mediana(sample)
 
-print(b_momentos)
-print(b_maxima_verosimilitud)
-print(b_mediana)
+print(estimacion_momentos)
+print(estimacion_maxima_verosimilitud)
+print(estimacion_mediana)
 
 #Error de los estimadores
-error_momentos = abs(b_momentos - b)
-error_maxima_verosimilitud = abs(b_maxima_verosimilitud - b)
-error_mediana = abs(b_mediana - b)
+error_momentos = abs(estimacion_momentos - b)
+error_maxima_verosimilitud = abs(estimacion_maxima_verosimilitud - b)
+error_mediana = abs(estimacion_mediana - b)
 
 print(error_momentos)
 print(error_maxima_verosimilitud)
