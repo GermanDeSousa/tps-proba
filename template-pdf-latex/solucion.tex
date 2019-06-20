@@ -23,12 +23,12 @@
 % Pongan cuantos integrantes quieran
 \integrante{Capello, Bruno}{623/17}{bruno.icapello@gmail.com}
 \integrante{De Sousa Bispo, Germán}{359/12}{german\_nba11@hotmail.com}
-\integrante{Serapio, Noelia}{004/15}{noeliaserapio@gmail.com}
+\integrante{Serapio, Noelia}{871/03}{noeliaserapio@gmail.com}
 
 \maketitle
 
 \section{Ejercicio 1}
-Para la implementación de estos casos se utilizaron las funciones mean() y sd() de R, dado que ambas proveen la media muestral y el desvio estándar muestral. Se hicieron varias pruebas (a mano) contra las definiciones de media muestral y varianza muestral y en todos los casos el resultado fue igual. 
+Para la implementación de estos casos se utilizaron las funciones mean() y max() de R, dado que ambas proveen la media muestral y el máximo muestral. Se hicieron varias pruebas (a mano) contra las definiciones de media muestral y en todos los casos el resultado fue igual. 
 
 \subsection{Estimador de momentos}
 Sea $X_{i}\sim$U(0, $\theta$)
@@ -63,10 +63,10 @@ Entonces:
 \hat{\theta_{n}} = max(x_{i}) \textrm{ con i $\leq$ n}
 \]
 
-\section{Ejercico 2}
+\section{Ejercicio 2}
 Para la implementación de este estimador, se utilizó la función median() que retorna la mediana de un vector.
 
-\section{Ejercico 3}
+\section{Ejercicio 3}
 En este ejercicio, la muestra se genera aleatoriamente con la función runif(15, min=0, max=b). Luego de eso se inserta esa muestra en nuestras funciones de estimación. 
 
 Dado que cada ejecución tiene una muestra aleatoria distinta, presentamos las estimaciones impresas por pantalla en nuestro código en R. Además agregamos aquí una tabla comparativa de un ejemplo de una estimación realizada. 
@@ -85,13 +85,23 @@ Dado que cada ejecución tiene una muestra aleatoria distinta, presentamos las e
 \end{tabular}
 \end{center}
 
-\section{Ejercico 4}
+\section{Ejercicio 4}
 Cada uno de los pasos para realizar este experimento están diferenciados con un comentario en nuestro código en R donde indica que inciso del ejercicio es.
+\subsection{Varianza}
+Para calcular la varianza se utilizo la función sd() de R que devuelve el desvio estándar muestral, pues la fórmula para el calculo de la varianza muestral es:
+\[
+\textrm{Varianza muestral} = S^2 \textrm{ donde S es el desvío estandar muestral}
+\]
+\subsection{Error cuadrático medio (ECM)}
+Para calcular el ECM se utilizó la siguiente fórmula:
+\[
+ECM_\theta(\hat{\theta}) = V_\theta(\hat{\theta}) + (sesgo_\theta(\hat{\theta}))^2
+\]
 
+\section{Ejercicio 5}
+Se realizaron las simulaciones de cada uno de los estimadores devolviendo el sesgo y la varianza. La cantidad de repeticiones en todos los casos fue 1000.
 
-\section{Ejercico 5}
-
-\section{Ejercico 6}
+\section{Ejercicio 6}
 \subsection{Graficos}
 \begin{figure}[H]
 	\centering
@@ -105,7 +115,7 @@ Con respecto a la varianza y el ECM los graficos son muy parecidos, a medida que
 
 En este caso elegimos el estimador de maxima verosimilitud, ya que los estimadores de momentos y mediana como tienen poco sesgo van a tener mucha varianza a medida que aumenta b. En cambio el de máxima verosimilitud mantiene algo de sesgo y varianza por lo que parece más estable.
 
-\section{Ejercico 7}
+\section{Ejercicio 7}
 \subsection{Graficos}
 \begin{figure}[H]
 	\centering
@@ -123,7 +133,7 @@ entonces es consistente el estimador. \newline
   
 Viendo el grafico como \[ECM(\hat{\theta_{n}}) \rightarrow 0 \ cuando \ n \rightarrow \infty \ y \ el\ ECM = sesgo^2 + varianza\] podemos decir que son consistentes. 
 
-\section{Ejercico 8}
+\section{Ejercicio 8}
 \subsection{Cálculo de los estimadores}
 Sea la siguiente muestra : [0.917, 0.247, 0.384, 0.530, 0.798, 0.912, 0.096, 0.684, 0.394, 20.1, 0.769, 0.137, 0.352, 0.332, 0.670] \newline
 
@@ -136,7 +146,7 @@ Mediana da 1.06
 \subsection{Observaciones}
 Lo que podemos observar es que esta muestra dada tiene un solo punto outlier muy grande comparado con los demas puntos, lo que afecta mucho en este caso a la estimación de maxima verosimilitud y afecta en menor medida a la de momentos. Por eso en este caso elegimos el de la mediana que es la menos afectada y da una buena estimacion.
  
-\section{Ejercico 9}
+\section{Ejercicio 9}
 Para este ejercicio se hizo una pequeña adaptación de las simulaciones hechas para cada estimador en el ejercicio 5. 
 
 Estas modificaciones comprenden ``ensuciar" la muestra aleatoria antes del calculo así como agregar el retorno de error cuadrático medio. 
