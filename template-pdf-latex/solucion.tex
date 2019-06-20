@@ -67,20 +67,21 @@ Entonces:
 Para la implementación de este estimador, se utilizó la función median() que retorna la mediana de un vector.
 
 \section{Ejercicio 3}
-En este ejercicio, la muestra se genera aleatoriamente con la función runif(15, min=0, max=b). Luego de eso se inserta esa muestra en nuestras funciones de estimación. 
+En este ejercicio, la muestra se genera aleatoriamente con la función runif(15, min=0, max=b). Luego de eso se inserta esa muestra en nuestras funciones de estimación.
+Para calcular el error tomamos módulo del valor del estimador menos el b. 
 
-Dado que cada ejecución tiene una muestra aleatoria distinta, presentamos las estimaciones impresas por pantalla en nuestro código en R. Además agregamos aquí una tabla comparativa de un ejemplo de una estimación realizada. 
+Dado que cada ejecución tiene una muestra aleatoria distinta, presentamos las estimaciones y errores impresos por pantalla en nuestro código en R. Además agregamos aquí una tabla comparativa de un ejemplo de una estimación realizada con su respectivo error. 
 
 \begin{center}
- \begin{tabular}{||c | c||} 
+ \begin{tabular}{||c | c | c||} 
  \hline
- Estimador & Estimación \\ [0.5ex] 
+ Estimador & Estimación  & Error \\ [0.5ex] 
  \hline\hline
- Estimador de momentos & 1.016217 \\ 
+ Estimador de momentos & 1.074311 & 0.07431135 \\ 
  \hline
- Estimador de máxima verosimilitud & 0.9402409 \\
+ Estimador de máxima verosimilitud & 0.9652966 & 0.03470338 \\
  \hline
- Estimador mediana & 1.023344 \\ [1ex] 
+ Estimador mediana & 1.287941 & 0.2879408 \\ [1ex] 
  \hline
 \end{tabular}
 \end{center}
